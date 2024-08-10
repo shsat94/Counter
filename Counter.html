@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        body {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: #00115b;
+        }
+        .b{
+            display: flex;
+            text-align:center;
+            justify-content: space-evenly;
+            flex-direction: row;
+        }
+        h1{
+            font-size: 10rem;
+            color: antiquewhite;
+        }
+        .button{
+            width: 9rem;
+            height: 5rem;
+            font-size: 3rem;
+            color: #5b0000;
+            border: none;
+            background-color: #d94c4c;
+            border-radius: 2rem;
+            box-shadow: 0 0 2rem black;
+            cursor: pointer;
+        }
+        .button:disabled{
+            background-color: #e98686;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <h1>0</h1>
+    <div class="b">
+        <button  class="button" id="sub">-</button>
+        <button class="button" id="reset">Reset</button>
+        <button  class="button" id="add">+</button>
+    </div>
+
+<script>
+    const add=document.querySelector("#add");
+    const sub=document.querySelector("#sub");
+    const reset=document.querySelector("#reset");
+    const count=document.querySelector("h1");
+    sub.disabled=true;
+    reset.disabled=true;
+    
+    add.addEventListener("click",()=>{
+        count.innerText=Number(count.innerText)+1;
+        sub.disabled=false;
+        reset.disabled=false;
+
+    })
+    sub.addEventListener("click",()=>{
+        count.innerText=Number(count.innerText)-1;
+        count.innerText=='0'?(sub.disabled=true,reset.disabled=true):"";
+    })
+    reset.addEventListener("click",()=>{
+        count.innerText="0";
+        sub.disabled=true;
+        reset.disabled=true;
+    })
+</script>
+</body>
+
+</html>
